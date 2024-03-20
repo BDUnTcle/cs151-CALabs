@@ -32,6 +32,8 @@ public abstract class Grid extends Model {
         for (int row = 0; row < dim; row++){
             for (int col = 0; col < dim; col++){
                 cells[row][col] = makeCell(true);
+                cells[row][col].setCol(col);
+                cells[row][col].setRow(row);
             }
         }
         // 2. use getNeighbors to set the neighbors field of each cell
@@ -49,7 +51,6 @@ public abstract class Grid extends Model {
         for (int row = 0; row < dim; row++) {
             for (int col = 0; col < dim; col++) {
                 cells[row][col].reset(randomly);
-
             }
         }
         // notify subscribers
@@ -66,9 +67,8 @@ public abstract class Grid extends Model {
             Set<Cell> neighbors = new HashSet<>();
             int row = asker.getRow();
             int col = asker.getCol();
-
-            for (int i = -1; i <= 1; i ++) {
-                for (int j = -1; j <= 1; j++) {
+            for (int i = -radius; i <= radius; i ++) {
+                for (int j = -radius; j <= radius; j++) {
                     if (i == 0 && j == 0) {
                         continue;
                     }

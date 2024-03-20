@@ -3,14 +3,18 @@ package life;
 import CALab.Cell;
 
 import java.awt.*;
+import java.util.Random;
 
 import static life.Society.death;
 import static life.Society.rebirth;
 
 public class Agent extends Cell{
-    private int state = 0;
+    private int state = 0;//0 dead, 1 alive
     private int ambience = 0;
-
+    public Agent(int r,int c)
+    {
+        super(r,c);
+    }
 
     @Override
     public void update() {
@@ -50,7 +54,7 @@ public class Agent extends Cell{
     }
 
         public Color getColor () {
-            if (this.state == 0) { // should it be this.state or this.getStatus()?
+            if (this.state == 0) {
                 return Color.RED;
             } else {
                 return Color.GREEN;

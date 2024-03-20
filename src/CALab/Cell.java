@@ -13,7 +13,18 @@ public abstract class Cell extends Publisher implements Serializable {
     protected Set<Cell> neighbors = new HashSet<Cell>();
     protected Grid myGrid = null;
     protected Cell partner = null;
-
+    public Cell(int r,int c)
+    {
+        super();
+        row = r;
+        col = c;
+    }
+    public void setRow(int r){
+        row = r;
+    }
+    public void setCol(int c){
+        col = c;
+    }
     public int getRow() { return row;}
 
     public int getCol() { return col;}

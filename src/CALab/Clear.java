@@ -14,5 +14,6 @@ public class Clear extends Command {
         Grid g = (Grid)getModel();
         g.repopulate(false);
         g.observe();
+        g.update();
     }
 }

@@ -3,6 +3,7 @@ package life;
 import CALab.Grid;
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 public class Society extends Grid {
@@ -25,7 +26,21 @@ public class Society extends Grid {
     @Override
     public  Agent makeCell(boolean uniform)
     {
-        return new Agent();
+        return new Agent(0,0);
     }
+    @Override
+    public void repopulate(boolean randomly) {
+        for (int row = 0; row < dim; row++) {
+            for (int col = 0; col < dim; col++) {
 
+                if (randomly && new Random().nextDouble() * 100 < percentAlive) {
+                    cells[row][col].setStatus(1);
+                } else {
+                    cells[row][col].setStatus(0);
+                }
+            }
+        }
+        // notify subscribers
+        changed();
+    }
 }
